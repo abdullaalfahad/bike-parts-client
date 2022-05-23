@@ -5,9 +5,9 @@ const Footer = () => {
     const year = date.getFullYear();
 
     return (
-        <footer class="footer footer-center p-10 bg-primary text-secondary">
+        <footer class="footer footer-center p-10 bg-primary text-white">
             <div>
-                <h1 className='text-2xl font-bold'>BIKE PARTS</h1>
+                <h1 className='text-2xl font-bold text-secondary'>BIKE PARTS</h1>
                 <p class="font-bold">
                     Bike Parts LTD. Providing reliable parts since 1992
                 </p>
