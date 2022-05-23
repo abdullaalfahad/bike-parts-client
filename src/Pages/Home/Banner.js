@@ -11,7 +11,7 @@ const Banner = () => {
                 <div class="lg:w-9/12">
                     <h1 class="mb-5 text-2xl lg:text-5xl font-bold" >Welcome To Bike Parts Website</h1>
                     <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary text-white">Get Started</button>
+                    <button class="btn btn-secondary text-white">Get Started</button>
                 </div>
             </div>
         </div >

@@ -5,7 +5,7 @@ const Footer = () => {
     const year = date.getFullYear();
 
     return (
-        <footer class="footer footer-center p-10 bg-primary text-white">
+        <footer class="footer footer-center p-10 bg-primary text-secondary">
             <div>
                 <h1 className='text-2xl font-bold'>BIKE PARTS</h1>
                 <p class="font-bold">
