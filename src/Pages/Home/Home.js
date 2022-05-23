@@ -5,11 +5,13 @@ import Professionals from './Professionals';
 import Location from './Location';
 import Summary from './Summary';
 import About from './About';
+import Parts from './Parts';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <Parts></Parts>
             <Professionals></Professionals>
             <About></About>
             <Summary></Summary>

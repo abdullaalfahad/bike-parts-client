@@ -1,0 +1,26 @@
+[
+    {
+        "name": "HYDRAULIC PM FRONT DISC BRAKE",
+        "description": "kit|caliper|rotor|color|weight: front w/ PM adapter|74mm|180mm|black|429g",
+        "minimumOrder": 100,
+        "available": 14500,
+        "price": 59,
+        "img": "https://i.ibb.co/VqTgPqM/cw2030.jpg"
+    },
+    {
+        "name": "MECHANICAL FRONT/REAR DISC BRAKE",
+        "description": "kit|caliper|rotor|color|weight: front/rear|74mm|160mm|black|745g",
+        "minimumOrder": 100,
+        "available": 15800,
+        "price": 55,
+        "img": "https://i.ibb.co/TvrJcDD/cw2042.jpg"
+    },
+    {
+        "name": "BRAKING ITALY INCAS 2.0 DISC FRONT BRAKE",
+        "description": "kit|caliper|rotor|color|weight: front|post mount|separate|bronze with braided silver hose|",
+        "minimumOrder": 100,
+        "available": 13000,
+        "price": 119,
+        "img": "https://i.ibb.co/f1r2LNM/bn3010.jpg"
+    }
+]
