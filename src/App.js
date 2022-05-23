@@ -6,7 +6,7 @@ import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <div className='bg-primary text-white'>
+    <div className=''>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
