@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -15,11 +16,15 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, uError] = useUpdateProfile(auth);
-
+    const [token] = useToken(user || gUser);
     let errorMessage;
     let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (token) {
+            navigate('/');
+        }
+    }, [token, user, gUser, navigate])
 
     if (loading || gLoading || updating) {
         return <Loading></Loading>
@@ -27,10 +32,6 @@ const Register = () => {
 
     if (error || gError || uError) {
         errorMessage = <p className='text-red-500 mb-4'>{error?.message || gError?.message || uError?.message}</p>
-    }
-
-    if (user || gUser) {
-        navigate(from, { replace: true });
     }
 
     const onSubmit = async (data) => {

@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const Purchase = () => {
+    const [user] = useAuthState(auth);
     const { id } = useParams();
     const availableRef = useRef(0);
     const quantityRef = useRef(0);
@@ -32,7 +35,7 @@ const Purchase = () => {
                 address: event.target.address.value,
                 phone: event.target.phone.value,
             }
-            fetch('http://localhost:5000/order', {
+            fetch('http://localhost:5000/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,14 +104,14 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="name" className="input input-bordered w-full max-w-xs" name='name' required />
+                            <input type="text" value={user.displayName} className="input input-bordered w-full max-w-xs" name='name' required readOnly />
                         </div>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="Your Email" className="input input-bordered w-full max-w-xs" name='email' required />
+                            <input type="email" value={user.email} className="input input-bordered w-full max-w-xs" name='email' required readOnly />
                         </div>
 
                         <div className="form-control w-full max-w-xs">
