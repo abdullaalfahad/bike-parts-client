@@ -29,6 +29,9 @@ const Purchase = () => {
 
         if (available > orderQuantity && orderQuantity >= tool.minimumOrder) {
             const newItem = {
+                tool: tool.name,
+                orderQuantity: orderQuantity,
+                price: price,
                 email: event.target.email.value,
                 name: event.target.name.value,
                 totalPrice: orderQuantity * price,
