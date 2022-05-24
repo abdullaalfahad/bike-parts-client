@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
+const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
@@ -95,7 +95,7 @@ const SignUp = () => {
                         <input className='btn w-full max-w-xs btn-secondary' type="submit" value="Sign Up" />
                     </form>
 
-                    <p className='text-center'><small>Already have an account? <Link className='text-secondary font-bold' to="/login">Please login</Link></small></p>
+                    <p className='text-center'><small>Already have an account? <Link className='text-secondary font-medium' to="/login">Please login</Link></small></p>
 
                     <div className="divider">OR</div>
                     <button className="btn btn-outline uppercase" onClick={() => signInWithGoogle()}>Continue with google</button>
@@ -105,4 +105,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;
