@@ -42,13 +42,10 @@ const Purchase = () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.insertedId) {
-                        // console.log(orderQuantity)
                         let { available, ...rest } = tool;
                         let newQuantity = available - orderQuantity;
-                        console.log(newQuantity);
                         let newTool = { available: newQuantity, ...rest };
                         setTool(newTool);
-                        console.log(newTool);
 
                         fetch(`http://localhost:5000/tools/${id}`, {
                             method: 'PUT',
@@ -60,6 +57,8 @@ const Purchase = () => {
                             .then(response => response.json())
                             .then(data => {
                                 toast('Order successfully placed');
+                                event.target.reset();
+                                quantityRef.current.value = "";
                             })
                     }
                 })

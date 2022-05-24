@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Part = ({ part }) => {
+const Part = ({ part, refetch }) => {
     const { _id, name, img, description, minimumOrder, available, price } = part;
     const navigate = useNavigate();
 
@@ -18,13 +18,12 @@ const Part = ({ part }) => {
             <div class="card-body items-center text-center">
                 <h2 class="card-title">{name}</h2>
                 <h5 className='font-medium'>Price: ${price}</h5>
-                <p className='my-3'>{description}</p>
-                <h6 className='font-medium'>Available Quantity: {available}</h6>
-                <div className='my-5'>
-                    <h6 className='font-medium'>Available Quantity: {minimumOrder}</h6>
-                </div>
+                <p className='my-3'>Description: {description}</p>
+                <p className='font-medium'>Available Quantity: {available}</p>
+                <p className='font-medium'>Minimum Order: {minimumOrder}</p>
+
                 <div class="card-actions justify-end">
-                    <button class="btn btn-secondary w-9/12 mx-auto text-white" onClick={() => handlePurchase(_id)}>Purchase</button>
+                    <button class="btn btn-secondary w-9/12 mx-auto text-white px-8" onClick={() => handlePurchase(_id)}>Purchase</button>
                 </div>
             </div>
         </div>

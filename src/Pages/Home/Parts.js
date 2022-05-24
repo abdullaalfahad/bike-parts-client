@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import Part from './Part';
 
 const Parts = () => {
-    const { data: parts, isLoading, error } = useQuery('tools', () =>
+    const { data: parts, isLoading, refetch } = useQuery('tools', () =>
         fetch('http://localhost:5000/tools').then(res =>
             res.json()
         )
