@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from './Pages/Login/Register';
 import Login from './Pages/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
       <ToastContainer></ToastContainer>
