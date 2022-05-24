@@ -16,6 +16,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import AllUsers from './Pages/Dashboard/AllUsers';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
+import AddProduct from './Pages/Dashboard/AddProduct';
 
 function App() {
   return (
@@ -42,6 +43,11 @@ function App() {
           <Route path='allUser' element={
             <RequireAdmin>
               <AllUsers></AllUsers>
+            </RequireAdmin>
+          }></Route>
+          <Route path='addProduct' element={
+            <RequireAdmin>
+              <AddProduct></AddProduct>
             </RequireAdmin>
           }></Route>
         </Route>

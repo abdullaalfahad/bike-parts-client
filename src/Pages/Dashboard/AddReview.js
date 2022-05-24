@@ -48,7 +48,7 @@ const AddReview = () => {
                     <label className="label">
                         <span className="label-text">Ratings</span>
                     </label>
-                    <input type="number" placeholder='' className="input input-bordered w-full max-w-xs" name='rating' required />
+                    <input type="number" placeholder='Ratings' className="input input-bordered w-full max-w-xs" name='rating' required />
                 </div>
 
                 <div className="form-control w-full max-w-xs">
