@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const Review = ({ re }) => {
-    const { review, rating } = re;
-    console.log(re)
+    const { review, rating, name } = re;
+
     return (
         <div class="card max-w-lg bg-base-100 shadow-xl">
             <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
+                <h2 class="card-title">{name}</h2>
                 <p>{review}</p>
                 <Rating
                     initialRating={rating}
