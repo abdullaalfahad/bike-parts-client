@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import DeleteConfirmModal from './DeleteConfirmModal';
 import ProductRow from './ProductRow';
 
 const ManageProduct = () => {
+    const [deletingProduct, setDeletingProduct] = useState(null);
+
     const { data: parts, isLoading, refetch } = useQuery('parts', () => fetch('http://localhost:5000/tools', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,13 +28,21 @@ const ManageProduct = () => {
                         <th>Product Name</th>
                         <th>Unit Price</th>
                         <th>Available Quantity</th>
-                        <th>Minimum Order Quantity</th>
+                        <th>Order Quantity</th>
+                        <th>Manage</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {parts.map((tool, index) => <ProductRow key={tool._id} tool={tool} index={index} refetch={refetch}></ProductRow>)}
+                    {parts.map((tool, index) => <ProductRow key={tool._id} tool={tool} index={index} setDeletingProduct={setDeletingProduct}></ProductRow>)}
                 </tbody>
             </table>
+            {
+                deletingProduct && <DeleteConfirmModal
+                    deletingProduct={deletingProduct}
+                    refetch={refetch}
+                    setDeletingProduct={setDeletingProduct}
+                ></DeleteConfirmModal>
+            }
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductRow = ({ tool, index, refetch }) => {
+const ProductRow = ({ tool, index, setDeletingProduct }) => {
     const { name, img, available, minimumOrder, price } = tool;
     return (
         <tr>
@@ -12,12 +12,12 @@ const ProductRow = ({ tool, index, refetch }) => {
                     </div>
                 </div>
             </td>
-            <td>{name}</td>
+            <td>{name.slice(0, 20)}...</td>
             <td>${price}</td>
             <td>{available}</td>
             <td>{minimumOrder}</td>
             <td>
-                {/* <label htmlFor="delete-doctor-modal" class="btn modal-button btn-xs bg-red-500 text-white border-0" onClick={() => setDeletingDoctor(doctor)}>Delete</label> */}
+                <label htmlFor="delete-product-modal" class="btn modal-button btn-xs bg-red-500 text-white border-0" onClick={() => setDeletingProduct(tool)}>Delete</label>
             </td>
         </tr>
     );
