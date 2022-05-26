@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import CancelOrderModal from './CancelOrderModal';
@@ -54,8 +54,11 @@ const MyOrders = () => {
                                 <td>{order.orderQuantity}</td>
                                 <td>{order.price}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{(order.totalPrice && !order.paid) && <div><button className='btn btn-sm btn-secondary'>Pay</button>
+                                <td>{(order.totalPrice && !order.paid) && <div><Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-sm btn-secondary'>Pay</button></Link>
                                     <label htmlFor="delete-order-modal" className='btn btn-sm btn-accent text-white ml-2' onClick={() => setDeletingOrder(order)}>Cancel</label>
+                                </div>} {(order.totalPrice && order.paid) && <div>
+                                    <span className='text-success font-bold'>Paid, </span>
+                                    <span className='text-success'>TransactionId: {order.transactionId}</span>
                                 </div>}</td>
                             </tr>)
                         }

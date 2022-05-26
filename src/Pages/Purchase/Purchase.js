@@ -48,24 +48,27 @@ const Purchase = () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.insertedId) {
-                        let { available, ...rest } = tool;
-                        let newQuantity = available - orderQuantity;
-                        let newTool = { available: newQuantity, ...rest };
-                        setTool(newTool);
+                        toast('Order successfully placed');
+                        event.target.reset();
+                        quantityRef.current.value = "";
+                        // let { available, ...rest } = tool;
+                        // let newQuantity = available - orderQuantity;
+                        // let newTool = { available: newQuantity, ...rest };
+                        // setTool(newTool);
 
-                        fetch(`http://localhost:5000/tools/${id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(newTool),
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                toast('Order successfully placed');
-                                event.target.reset();
-                                quantityRef.current.value = "";
-                            })
+                        // fetch(`http://localhost:5000/tools/${id}`, {
+                        //     method: 'PUT',
+                        //     headers: {
+                        //         'Content-Type': 'application/json',
+                        //     },
+                        //     body: JSON.stringify(newTool),
+                        // })
+                        //     .then(response => response.json())
+                        //     .then(data => {
+                        //         toast('Order successfully placed');
+                        //         event.target.reset();
+                        //         quantityRef.current.value = "";
+                        //     })
                     }
                 })
         }
