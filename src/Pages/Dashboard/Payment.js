@@ -23,19 +23,19 @@ const Payment = () => {
 
     return (
         <div className='ml-16 my-8'>
-            <div class="card w-50 max-w-md shadow-2xl bg-base-100 mb-5">
-                <div class="card-body">
+            <div className="card w-50 max-w-md shadow-2xl bg-base-100 mb-5">
+                <div className="card-body">
                     <p className='text-secondary font-bold'>Hello {order?.name}, </p>
-                    <h2 class="card-title">Please pay for {order?.tool?.slice(0, 20)}...</h2>
+                    <h2 className="card-title">Please pay for {order?.tool?.slice(0, 20)}...</h2>
                     <p>Your order quantity: {order?.orderQuantity}, unit price: ${order?.price}</p>
-                    <div class="card-actions justify-end">
+                    <div className="card-actions justify-end">
                         <p>Total Payable: ${order?.totalPrice}</p>
                     </div>
                 </div>
 
             </div>
-            <div class="card w-50 max-w-md shadow-2xl bg-base-100">
-                <div class="card-body">
+            <div className="card w-50 max-w-md shadow-2xl bg-base-100">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm order={order} />
                     </Elements>

@@ -55,7 +55,7 @@ const AddReview = () => {
                     <label className="label">
                         <span className="label-text">Review</span>
                     </label>
-                    <textarea class="textarea textarea-bordered w-full max-w-xs" placeholder="Describe your review" name='description' required></textarea>
+                    <textarea className="textarea textarea-bordered w-full max-w-xs" placeholder="Describe your review" name='description' required></textarea>
                 </div>
 
                 <input className='btn btn-secondary w-full max-w-xs mt-4' type="submit" value="Add" />

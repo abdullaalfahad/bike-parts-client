@@ -3,9 +3,9 @@ import React from 'react';
 const MyPortfolio = () => {
     return (
         <div className='w-11/12 mx-auto flex justify-center items-center text-primary' style={{ height: '80vh' }}>
-            <div class="card w-96 bg-primary text-white shadow-xl">
-                <div class="card-body text-secondary">
-                    <h2 class="card-title"><u>Name:</u> Abdulla Al Fahad</h2>
+            <div className="card w-96 bg-primary text-white shadow-xl">
+                <div className="card-body text-secondary">
+                    <h2 className="card-title"><u>Name:</u> Abdulla Al Fahad</h2>
                     <p><u>Email Address:</u> aafahad02@gmail.com</p>
                     <p><u>Educational Background:</u> BSc in Computer Science and Engineer from Daffodil International University</p>
                     <p><u>Skills as a Web Developer:</u> HTML, CSS, JavaScript, React.js, React Router, Node.js, Express.js, MongoDB, Tailwind, Bootstrap, Material UI, Daisy UI, Git, NPM, Netlify, Firebase, Heroku.</p>

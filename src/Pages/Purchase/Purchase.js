@@ -79,13 +79,13 @@ const Purchase = () => {
     return (
         <div className='w-11/12 lg:w-11/12 mx-auto py-14 md:py-28 text-primary'>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
-                <div class="card max-w-lg shadow-xl">
-                    <figure class="px-10 pt-10">
-                        <img src={tool.img} alt="Shoes" class="rounded-xl" />
+                <div className="card max-w-lg shadow-xl">
+                    <figure className="px-10 pt-10">
+                        <img src={tool.img} alt="Shoes" className="rounded-xl" />
                     </figure>
-                    <div class="card-body">
-                        <h2 class="text-2xl">{tool.name}</h2>
-                        <h2 class="text-xl">Price: <input value={tool.price} type="text" ref={priceRef} className="" /></h2>
+                    <div className="card-body">
+                        <h2 className="text-2xl">{tool.name}</h2>
+                        <h2 className="text-xl">Price: <input value={tool.price} type="text" ref={priceRef} className="" /></h2>
                         <p className='my-3'>Description: {tool.description}</p>
                         <h6 className='font-medium'>Available Quantity: <input type="text" ref={availableRef} value={tool.available} /></h6>
                         <h6 className='font-medium'>Minimum Order Quantity: {tool.minimumOrder}</h6>
@@ -118,7 +118,7 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Address</span>
                             </label>
-                            <textarea class="textarea textarea-bordered w-full max-w-xs" placeholder="Address" name='address' required></textarea>
+                            <textarea className="textarea textarea-bordered w-full max-w-xs" placeholder="Address" name='address' required></textarea>
                         </div>
 
                         <div className="form-control w-full max-w-xs">

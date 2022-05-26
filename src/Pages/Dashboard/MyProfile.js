@@ -76,7 +76,7 @@ const MyProfile = () => {
                         <label className="label">
                             <span className="label-text">Education</span>
                         </label>
-                        <textarea class="textarea textarea-bordered w-full max-w-xs" placeholder="educational background" required {...register("education", {
+                        <textarea className="textarea textarea-bordered w-full max-w-xs" placeholder="educational background" required {...register("education", {
                             required: true,
                         })}></textarea>
                     </div>
@@ -85,7 +85,7 @@ const MyProfile = () => {
                         <label className="label">
                             <span className="label-text">Location</span>
                         </label>
-                        <textarea class="textarea textarea-bordered w-full max-w-xs" placeholder="location" name='location' required {...register("location", {
+                        <textarea className="textarea textarea-bordered w-full max-w-xs" placeholder="location" name='location' required {...register("location", {
                             required: true,
                         })}></textarea>
                     </div>
@@ -109,9 +109,9 @@ const MyProfile = () => {
 
                 <div>
                     <h1 className='my-6 text-xl font-medium lg:text-2xl'>My Information</h1>
-                    <div class="card w-96 bg-primary text-secondary shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title">Name: {user?.displayName}</h2>
+                    <div className="card w-96 bg-primary text-secondary shadow-xl">
+                        <div className="card-body">
+                            <h2 className="card-title">Name: {user?.displayName}</h2>
                             <p>Email: {user?.email}</p>
                             {
                                 updatedUser && <>

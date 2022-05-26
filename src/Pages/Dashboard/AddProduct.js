@@ -72,7 +72,7 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Description</span>
                             </label>
-                            <textarea class="textarea textarea-bordered w-full max-w-xs" placeholder="Product description" name='description'  {...register("description", {
+                            <textarea className="textarea textarea-bordered w-full max-w-xs" placeholder="Product description" name='description'  {...register("description", {
                                 required: 'Provide product description',
                             })}></textarea>
                             <label className="label">
