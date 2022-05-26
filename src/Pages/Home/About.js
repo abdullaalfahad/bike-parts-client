@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -12,7 +13,7 @@ const About = () => {
                     <div className='flex-auto w-3/4 text-white md:ml-8 mt-5 md:mt-0'>
                         <h3 className='text-xl lg:text-2xl mb-5'>We are leading company in this field, We provide specific solutions for our every customers.</h3>
                         <p className='mb-5'>When you give to Our Charity, know your donation is making a difference Whether you are supporting one our Signature Programs or our carefully curated list of Gifts That Give More, our ut professional staff. Manufactory partner with over 320 amazing projects worldwide, and have given over $150 million in cash and product grants to other groups.</p>
-                        <button className='btn btn-secondary text-white'>See our blogs</button>
+                        <Link to="/blogs"><button className='btn btn-secondary text-white'>See our blogs</button></Link>
                     </div>
                 </div>
             </div >
