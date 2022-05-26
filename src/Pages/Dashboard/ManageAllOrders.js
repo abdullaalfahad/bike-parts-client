@@ -1,31 +1,16 @@
-import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Link, useNavigate } from 'react-router-dom';
-import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import CancelOrderModal from './CancelOrderModal';
 
-const MyOrders = () => {
+const ManageAllOrders = () => {
     const [deletingOrder, setDeletingOrder] = useState(null);
-
-    const [user] = useAuthState(auth);
-    const navigate = useNavigate();
-
-    const { data: orders, isLoading, refetch } = useQuery(['orders', user], () => fetch(`http://localhost:5000/order?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/orders', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then(res => {
-        if (res.status === 401 || res.status === 403) {
-            signOut(auth);
-            localStorage.removeItem('accessTOken');
-            navigate('/');
-        }
-        return res.json()
-    }))
+    }).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -33,12 +18,13 @@ const MyOrders = () => {
 
     return (
         <div className='mx-2 md:mx-0'>
-            <h1 className='my-6 text-xl font-medium lg:text-2xl'>Your Total Orders: {orders.length}</h1>
+            <h1 className='my-6 text-xl font-medium lg:text-2xl'>Manage All Orders {orders.length}</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Order Person</th>
                             <th>Tool Name</th>
                             <th>Order Quantity</th>
                             <th>Unit Price</th>
@@ -51,18 +37,18 @@ const MyOrders = () => {
                         {
                             orders.map((order, index) => <tr key={index}>
                                 <th>{index + 1}</th>
+                                <th>{order.name}</th>
                                 <td>{order.tool}</td>
                                 <td>{order.orderQuantity}</td>
                                 <td>{order.price}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{(order.totalPrice && !order.paid) && <div><Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs mr-2 btn-success text-white'>Pay</button></Link>
+                                <td>{(order.totalPrice && !order.paid) && <div><span className='text-error font-medium'>Unpaid</span>
                                 </div>} {(order.totalPrice && order.paid) && <div>
-                                    <span className='text-success font-bold'>Paid, </span>
-                                    <span className='text-success'>TransactionId: {order.transactionId}</span>
+                                    <span className='text-success font-bold'>Paid</span>
                                 </div>}</td>
                                 <td>{order.status === 'Pending' && <button className='btn btn-xs'>Pending</button>}
                                     {order.status === 'Shipped' && <span className='text-success text-medium'>Shipped</span>}
-                                    {!order.paid && <label htmlFor="delete-order-modal" className='btn btn-xs btn-error text-white' onClick={() => setDeletingOrder(order)}>Cancel</label>}
+                                    {(order.totalPrice && !order.paid) && <label htmlFor="delete-order-modal" className='btn btn-xs btn-error text-white ml-2' onClick={() => setDeletingOrder(order)}>Cancel</label>}
                                 </td>
                             </tr>)
                         }
@@ -80,4 +66,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageAllOrders;

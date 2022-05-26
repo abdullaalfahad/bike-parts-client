@@ -26,10 +26,10 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
             <input type="checkbox" id="delete-order-modal" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
-                    <h3 class="font-bold text-lg text-red-500">Are you sure you want to delete {tool.slice(0, 20)}...?</h3>
+                    <h3 class="font-bold text-lg text-error">Are you sure you want to delete {tool.slice(0, 20)}...?</h3>
                     <div class="modal-action">
-                        <button class="btn btn-xs bg-red-500 text-white border-0" onClick={handleDelete}>Delete</button>
-                        <label for="delete-order-modal" class="btn btn-xs btn-success">Cancel</label>
+                        <button class="btn btn-xs bg-error text-white border-0" onClick={handleDelete}>Delete</button>
+                        <label for="delete-order-modal" class="btn btn-xs btn-success text-white">Cancel</label>
                     </div>
                 </div>
             </div>
