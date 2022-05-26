@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CheckoutFrom = ({ order }) => {
     const { totalPrice, name, email, _id } = order;
@@ -8,7 +8,25 @@ const CheckoutFrom = ({ order }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [cardError, setCardError] = useState('');
 
+    useEffect(() => {
+        fetch("http://localhost:5000/create-payment-intent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ totalPrice }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                }
+            })
+    }, [totalPrice])
+
     const handleSubmit = async (event) => {
+        event.preventDefault();
         if (!stripe || !elements) {
             return;
         }
@@ -68,7 +86,7 @@ const CheckoutFrom = ({ order }) => {
                         },
                     }}
                 />
-                <button className='mt-4 btn btn-xs btn-secondary' type="submit">
+                <button className='mt-4 btn btn-xs btn-secondary' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
