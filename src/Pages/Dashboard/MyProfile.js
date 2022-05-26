@@ -103,7 +103,7 @@ const MyProfile = () => {
                             </label>
                         </div>
 
-                        <input className='btn btn-secondary w-full max-w-xs' type="submit" value="Add" />
+                        <input className='btn btn-secondary w-full max-w-xs' type="submit" value="Update info" />
                     </div>
                 </form>
 
