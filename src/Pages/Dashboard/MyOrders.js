@@ -44,6 +44,7 @@ const MyOrders = () => {
                             <th>Unit Price</th>
                             <th>Price</th>
                             <th>Actions</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +61,7 @@ const MyOrders = () => {
                                     <span className='text-success font-bold'>Paid, </span>
                                     <span className='text-success'>TransactionId: {order.transactionId}</span>
                                 </div>}</td>
+                                <td>{order.status && order?.status}</td>
                             </tr>)
                         }
                     </tbody>
