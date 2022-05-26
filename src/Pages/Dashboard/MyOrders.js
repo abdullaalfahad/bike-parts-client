@@ -61,7 +61,7 @@ const MyOrders = () => {
                                     <span className='text-success'>TransactionId: {order.transactionId}</span>
                                 </div>}</td>
                                 <td>{order.status === 'Pending' && <button className='btn btn-xs'>Pending</button>}
-                                    {order.status === 'Shipped' && <span className='text-success text-medium'>Shipped</span>}
+                                    {order.status === 'Shipped' && <span className='text-success font-medium'>Shipped</span>}
                                     {!order.paid && <label htmlFor="delete-order-modal" className='btn btn-xs btn-error text-white' onClick={() => setDeletingOrder(order)}>Cancel</label>}
                                 </td>
                             </tr>)

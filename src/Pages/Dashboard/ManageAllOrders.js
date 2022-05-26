@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 import CancelOrderModal from './CancelOrderModal';
 
@@ -14,6 +15,28 @@ const ManageAllOrders = () => {
 
     if (isLoading) {
         return <Loading></Loading>
+    }
+
+    const handleShipped = id => {
+        const action = {
+            status: 'Shipped'
+        }
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            },
+            body: JSON.stringify(action)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                }
+            })
     }
 
     return (
@@ -46,8 +69,8 @@ const ManageAllOrders = () => {
                                 </div>} {(order.totalPrice && order.paid) && <div>
                                     <span className='text-success font-bold'>Paid</span>
                                 </div>}</td>
-                                <td>{order.status === 'Pending' && <button className='btn btn-xs'>Pending</button>}
-                                    {order.status === 'Shipped' && <span className='text-success text-medium'>Shipped</span>}
+                                <td>{order.status === 'Pending' && <button className='btn btn-xs' onClick={() => handleShipped(order._id)}>Pending</button>}
+                                    {order.status === 'Shipped' && <span className='text-success font-medium'>Shipped</span>}
                                     {(order.totalPrice && !order.paid) && <label htmlFor="delete-order-modal" className='btn btn-xs btn-error text-white ml-2' onClick={() => setDeletingOrder(order)}>Cancel</label>}
                                 </td>
                             </tr>)
