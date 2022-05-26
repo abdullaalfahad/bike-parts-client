@@ -7,6 +7,8 @@ const CheckoutFrom = ({ order }) => {
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
     const [cardError, setCardError] = useState('');
+    const [cardSuccess, setCardSuccess] = useState('');
+    const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {
@@ -44,7 +46,6 @@ const CheckoutFrom = ({ order }) => {
 
         setCardError(error?.message || '');
 
-
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -60,11 +61,13 @@ const CheckoutFrom = ({ order }) => {
 
         if (intentError) {
             setCardError(intentError.message);
-
+            setCardSuccess('');
         }
         else {
             setCardError('');
-
+            setTransactionId(paymentIntent.id);
+            console.log(paymentIntent);
+            setCardSuccess('Congrats! Your payment is completed.')
         }
     }
     return (
@@ -86,10 +89,18 @@ const CheckoutFrom = ({ order }) => {
                         },
                     }}
                 />
-                <button className='mt-4 btn btn-xs btn-secondary' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='mt-4 btn btn-xs btn-secondary' type="submit" disabled={!stripe || !clientSecret || cardSuccess}>
                     Pay
                 </button>
             </form>
+            {cardError && <p className='text-red-500'>{cardError}</p>}
+            {
+                cardSuccess &&
+                <div>
+                    <p className='text-success'>{cardSuccess}</p>
+                    <p className='text-success'>TransactionId: {transactionId}</p>
+                </div>
+            }
         </div>
     );
 };
