@@ -57,7 +57,7 @@ const MyProfile = () => {
         <div className='mx-2 w-11/12 lg:w-10/12 md:mx-auto mt-3'>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                 <form onSubmit={handleSubmit(onSubmit)} className="">
-                    <h1 className='my-6 text-xl font-medium lg:text-2xl'>Update Your Profile Info</h1>
+                    <h1 className='my-6 text-xl font-medium lg:text-2xl'>Update Profile Information</h1>
                     <div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">

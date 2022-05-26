@@ -21,6 +21,24 @@ const Purchase = () => {
             .then(data => setTool(data))
     }, [id]);
 
+    const handleQuantity = (event) => {
+        const minimumOrder = tool.minimumOrder;
+        const orderQuantity = event.target.value;
+        const available = parseInt(availableRef.current.value);
+        if (orderQuantity > available) {
+            setDisable(true);
+            toast.error('Order quantity must be less than available quantity');
+        }
+        else if (orderQuantity < minimumOrder) {
+            setDisable(true);
+            toast.error('Order quantity must be grater than minimum quantity');
+        }
+        else {
+            setDisable(false);
+        }
+    }
+
+
     const handlePlaceOrder = event => {
         event.preventDefault();
         const available = parseInt(availableRef.current.value);
@@ -72,14 +90,6 @@ const Purchase = () => {
                     }
                 })
         }
-        else if (available < orderQuantity) {
-            // setDisable(true);
-            toast.error('Order quantity must be less than available');
-        }
-        else {
-            // setDisable(true);
-            toast.error('Order quantity must be grater than minimum quantity');
-        }
 
     }
 
@@ -95,10 +105,11 @@ const Purchase = () => {
                         <h2 class="text-xl">Price: <input value={tool.price} type="text" ref={priceRef} className="" /></h2>
                         <p className='my-3'>Description: {tool.description}</p>
                         <h6 className='font-medium'>Available Quantity: <input type="text" ref={availableRef} value={tool.available} /></h6>
+                        <h6 className='font-medium'>Minimum Order Quantity: {tool.minimumOrder}</h6>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label"><span className="label-text font-medium">Your Order Quantity:</span></label>
-                            <input type="number" name='orderQuantity' ref={quantityRef} placeholder={`(minimum: ${tool.minimumOrder})`} className="input input-bordered w-full max-w-xs" min={tool.minimumOrder} required />
+                            <input type="number" name='orderQuantity' onBlur={handleQuantity} ref={quantityRef} placeholder={`(minimum: ${tool.minimumOrder})`} className="input input-bordered w-full max-w-xs" min={tool.minimumOrder} required />
                         </div>
                     </div>
                 </div>
