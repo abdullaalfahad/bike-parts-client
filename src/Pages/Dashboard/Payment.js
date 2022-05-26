@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L1vJzFmLMx6FYCyJpODU7S4VPQl4qpxH1GGJ
 
 const Payment = () => {
     const { id } = useParams();
-    const { data: order, isLoading, refetch } = useQuery(['order', id], () => fetch(`http://localhost:5000/order/${id}`, {
+    const { data: order, isLoading, refetch } = useQuery(['order', id], () => fetch(`https://vast-dawn-74828.herokuapp.com/order/${id}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const Payment = () => {
             <div class="card w-50 max-w-md shadow-2xl bg-base-100 mb-5">
                 <div class="card-body">
                     <p className='text-secondary font-bold'>Hello {order?.name}, </p>
-                    <h2 class="card-title">Please pay for {order?.tool.slice(0, 20)}...</h2>
+                    <h2 class="card-title">Please pay for {order?.tool?.slice(0, 20)}...</h2>
                     <p>Your order quantity: {order?.orderQuantity}, unit price: ${order?.price}</p>
                     <div class="card-actions justify-end">
                         <p>Total Payable: ${order?.totalPrice}</p>

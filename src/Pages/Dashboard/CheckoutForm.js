@@ -12,7 +12,7 @@ const CheckoutFrom = ({ order }) => {
     const [processing, setProcessing] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://vast-dawn-74828.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const CheckoutFrom = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://vast-dawn-74828.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

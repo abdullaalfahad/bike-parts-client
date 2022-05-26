@@ -18,7 +18,7 @@ const AddReview = () => {
                 rating: rating,
                 review: description,
             }
-            fetch('http://localhost:5000/reviews', {
+            fetch('https://vast-dawn-74828.herokuapp.com/reviews', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

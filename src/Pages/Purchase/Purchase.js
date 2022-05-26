@@ -16,7 +16,7 @@ const Purchase = () => {
     const [tool, setTool] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
+        fetch(`https://vast-dawn-74828.herokuapp.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setTool(data))
     }, [id]);
@@ -47,6 +47,7 @@ const Purchase = () => {
 
         if (available > orderQuantity && orderQuantity >= tool.minimumOrder) {
             const newItem = {
+                available: tool.available,
                 tool: tool.name,
                 orderQuantity: orderQuantity,
                 price: price,
@@ -56,7 +57,7 @@ const Purchase = () => {
                 address: event.target.address.value,
                 phone: event.target.phone.value,
             }
-            fetch('http://localhost:5000/orders', {
+            fetch('https://vast-dawn-74828.herokuapp.com/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,24 +70,6 @@ const Purchase = () => {
                         toast('Order successfully placed');
                         event.target.reset();
                         quantityRef.current.value = "";
-                        // let { available, ...rest } = tool;
-                        // let newQuantity = available - orderQuantity;
-                        // let newTool = { available: newQuantity, ...rest };
-                        // setTool(newTool);
-
-                        // fetch(`http://localhost:5000/tools/${id}`, {
-                        //     method: 'PUT',
-                        //     headers: {
-                        //         'Content-Type': 'application/json',
-                        //     },
-                        //     body: JSON.stringify(newTool),
-                        // })
-                        //     .then(response => response.json())
-                        //     .then(data => {
-                        //         toast('Order successfully placed');
-                        //         event.target.reset();
-                        //         quantityRef.current.value = "";
-                        //     })
                     }
                 })
         }

@@ -12,7 +12,7 @@ const ProductRow = ({ tool, index, setDeletingProduct }) => {
                     </div>
                 </div>
             </td>
-            <td>{name.slice(0, 20)}...</td>
+            <td>{name?.slice(0, 20)}...</td>
             <td>${price}</td>
             <td>{available}</td>
             <td>{minimumOrder}</td>

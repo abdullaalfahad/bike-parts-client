@@ -5,7 +5,7 @@ import Review from './Review';
 
 const Reviews = () => {
     const { data: reviews, isLoading } = useQuery('reviews', () =>
-        fetch('http://localhost:5000/reviews').then(res =>
+        fetch('https://vast-dawn-74828.herokuapp.com/reviews').then(res =>
             res.json()
         )
     )
@@ -19,7 +19,7 @@ const Reviews = () => {
             <h1 className='text-2xl lg:text-4xl font-bold text-center mb-6 lg:mb-14'>Customer <span className='text-secondary'>Reviews</span></h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
-                    reviews.slice(1).slice(-8).reverse().map(re => <Review
+                    reviews?.slice(1)?.slice(-8).reverse().map(re => <Review
                         key={re._id} re={re}
                     ></Review>)
                 }

@@ -6,7 +6,7 @@ import CancelOrderModal from './CancelOrderModal';
 
 const ManageAllOrders = () => {
     const [deletingOrder, setDeletingOrder] = useState(null);
-    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/orders', {
+    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch('https://vast-dawn-74828.herokuapp.com/orders', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -17,11 +17,11 @@ const ManageAllOrders = () => {
         return <Loading></Loading>
     }
 
-    const handleShipped = id => {
+    const handleShipped = order => {
         const action = {
             status: 'Shipped'
         }
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://vast-dawn-74828.herokuapp.com/order/${order._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -34,6 +34,7 @@ const ManageAllOrders = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
+                    toast('Order shipped');
                     refetch();
                 }
             })
@@ -69,7 +70,7 @@ const ManageAllOrders = () => {
                                 </div>} {(order.totalPrice && order.paid) && <div>
                                     <span className='text-success font-bold'>Paid</span>
                                 </div>}</td>
-                                <td>{order.status === 'Pending' && <button className='btn btn-xs' onClick={() => handleShipped(order._id)}>Pending</button>}
+                                <td>{order.status === 'Pending' && <button className='btn btn-xs' onClick={() => handleShipped(order)}>Pending</button>}
                                     {order.status === 'Shipped' && <span className='text-success font-medium'>Shipped</span>}
                                     {(order.totalPrice && !order.paid) && <label htmlFor="delete-order-modal" className='btn btn-xs btn-error text-white ml-2' onClick={() => setDeletingOrder(order)}>Cancel</label>}
                                 </td>

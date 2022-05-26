@@ -28,7 +28,7 @@ const AddProduct = () => {
                         img: img
                     }
                     // send to database
-                    fetch('http://localhost:5000/tools', {
+                    fetch('https://vast-dawn-74828.herokuapp.com/tools', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -24,7 +24,7 @@ const MyProfile = () => {
             linkedin: linkedin,
         }
         console.log(updated)
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://vast-dawn-74828.herokuapp.com/users/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -42,7 +42,7 @@ const MyProfile = () => {
             })
     }
 
-    const { data: updatedUser, isLoading, refetch } = useQuery(['user', email], () => fetch(`http://localhost:5000/users/${email}`, {
+    const { data: updatedUser, isLoading, refetch } = useQuery(['user', email], () => fetch(`https://vast-dawn-74828.herokuapp.com/users/${email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

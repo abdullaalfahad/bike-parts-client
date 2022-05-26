@@ -5,7 +5,7 @@ import Part from './Part';
 
 const Parts = () => {
     const { data: parts, isLoading, refetch } = useQuery('tools', () =>
-        fetch('http://localhost:5000/tools').then(res =>
+        fetch('https://vast-dawn-74828.herokuapp.com/tools').then(res =>
             res.json()
         )
     )
@@ -19,7 +19,7 @@ const Parts = () => {
             <h1 className='text-2xl lg:text-4xl font-bold text-center mb-6 lg:mb-14'><span className='text-secondary'>Parts</span> We Served</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {
-                    parts.slice(0, 8).map(part => <Part key={part._id} part={part}></Part>)
+                    parts?.slice(0, 8).map(part => <Part key={part._id} part={part}></Part>)
                 }
             </div>
         </div>
