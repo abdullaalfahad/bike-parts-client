@@ -125,7 +125,7 @@ const Purchase = () => {
                             <label className="label">
                                 <span className="label-text">Phone</span>
                             </label>
-                            <input type="number" placeholder="Your Phone" className="input input-bordered w-full max-w-xs" name='phone' required />
+                            <input type="tel" placeholder="Your Phone" className="input input-bordered w-full max-w-xs" name='phone' required />
                         </div>
 
                         <input disabled={disabled} className='btn btn-secondary w-full max-w-xs mt-4' type="submit" value="Place Order" />
