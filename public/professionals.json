@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Geoffrey Smith",
+        "designation": "Engineers",
+        "img": "https://i.ibb.co/tDfm2R2/professionals-01.jpg",
+        "description": "Engineers, as practitioners of engineering, are professionals who invent, design, analyze, build and test machines, complex systems, structures, gadgets and materials to fulfill functional objectives and requirements while considering the limitations imposed by practicality, regulation, safety and cost."
+    },
+    {
+        "name": "Paul Goto",
+        "designation": "Mechanic",
+        "img": "https://i.ibb.co/1LxcN3T/professionals-02.jpg",
+        "description": "Automotive technician have many trades within. Some may specialize in the electrical diagnosis, while others may specialize in the mechanical aspects. Other mechanical areas include: brakes and steering, suspension, automatic or manual transmission, engine repairs, diagnosing customer complaints."
+    },
+    {
+        "name": "Geoffrey Cors",
+        "designation": "Engineers",
+        "img": "https://i.ibb.co/tDfm2R2/professionals-01.jpg",
+        "description": "Engineers, as practitioners of engineering, are professionals who invent, design, analyze, build and test machines, complex systems, structures, gadgets and materials to fulfill functional objectives and requirements while considering the limitations imposed by practicality, regulation, safety and cost."
+    }
+]
